@@ -3,6 +3,8 @@ package cli
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"os"
+	"regexp"
 )
 
 var runCmd = &cobra.Command{
@@ -12,7 +14,7 @@ var runCmd = &cobra.Command{
 	Aliases: []string{"r"},
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
-			return fmt.Errorf("Project Name need to be Supplied.")
+			return fmt.Errorf("File Name need to be Supplied to run")
 		}
 		if len(args) > 1 {
 			return fmt.Errorf("Too many arguments")
@@ -21,10 +23,17 @@ var runCmd = &cobra.Command{
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 		projectName := args[0]
-		fmt.Println("Project to run :", projectName)
+		currDir, _ := os.Getwd()
+		r, _ := regexp.Compile("^.*.(go)$")
+
+		if !(r.MatchString(projectName)) {
+			fmt.Printf("Currently only Go File is supported. Enter %s.go\n", projectName)
+		} else {
+			fmt.Println("Curr Dir: ", currDir)
+		}
 	},
 }
 
 func init() {
-	runCmd.SetUsageTemplate("\nUsage: \n\tugocli run [PROJECT_NAME]\n\tugc r [PROJECT_NAME]")
+	runCmd.SetUsageTemplate("\nUsage: \n\tugocli run [FILE_NAME]\n\tugc r [FILE_NAME]")
 }
