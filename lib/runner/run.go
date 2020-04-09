@@ -25,12 +25,6 @@ func (r *Runner) Run() {
 			fmt.Println(err.Error())
 			return
 		}
-		//reader := bufio.NewReader(stdout)
-		//line, err := reader.ReadString('\n')
-		//for err == nil {
-		//	fmt.Println(line)
-		//	line, err = reader.ReadString('\n')
-		//}
 		go func() {
 			merged := io.MultiReader(stdout, stderr)
 			scanner := bufio.NewScanner(merged)
