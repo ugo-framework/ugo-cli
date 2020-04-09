@@ -3,6 +3,7 @@ package cli
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"github.com/ugo-framework/ugo-cli/lib/runner"
 	"os"
 	"regexp"
 )
@@ -29,7 +30,12 @@ var runCmd = &cobra.Command{
 		if !(r.MatchString(projectName)) {
 			fmt.Printf("Currently only Go File is supported. Enter %s.go\n", projectName)
 		} else {
-			fmt.Println("Curr Dir: ", currDir)
+			r := runner.Runner{
+				Dir:      currDir,
+				Filename: projectName,
+			}
+			r.Run()
+			fmt.Println(r.Dir+"/"+r.Filename)
 		}
 	},
 }
