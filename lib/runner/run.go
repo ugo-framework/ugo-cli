@@ -13,6 +13,7 @@ type Runner struct {
 }
 
 func (r *Runner) Run() {
+	fmt.Println("Running App")
 	if r.Dir != "" && r.Filename != "" {
 		cmd := exec.Command("go", "run", r.Dir+"/"+r.Filename)
 		stdout, err := cmd.StdoutPipe()
@@ -37,7 +38,7 @@ func (r *Runner) Run() {
 			fmt.Println(err)
 			return
 		}
-		cmd.Wait()
+		//cmd.Wait()
 	} else {
 		fmt.Println("Error: Filename and Directory must be set")
 	}

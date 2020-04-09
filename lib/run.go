@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"github.com/ugo-framework/ugo-cli/lib/runner"
+	spectator "github.com/ugo-framework/ugo-spectator/lib"
 	"os"
 	"regexp"
 )
@@ -34,8 +35,18 @@ var runCmd = &cobra.Command{
 				Dir:      currDir,
 				Filename: projectName,
 			}
+			watcher, err := spectator.Init(".")
+			if err != nil {
+				fmt.Println(err.Error())
+				return
+			}
 			r.Run()
-			fmt.Println(r.Dir+"/"+r.Filename)
+			for {
+				select {
+				case _ = <-watcher.Ch:
+					r.Run()
+				}
+			}
 		}
 	},
 }
