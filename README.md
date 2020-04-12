@@ -1,5 +1,5 @@
 <div align="center">
-    <img width="300" src="./assets/ugo-gopher.png" alt="ugo spectator logo">
+    <img width="300" src="./assets/ugo-gopher.png" alt="ugo cli logo
 </div>
 
 # UGO CLI
@@ -29,10 +29,10 @@ ugocli run main.go // Enables live reload support
 
 # Features
 UGO CLI is a powerful CLI tool for your go projects and continous in development. Currently ugo cli supports the following features.
-- [*] Fast and Simple
-- [*] Small in size
-- [*] Enables Live Reload (Currently upto depth 1. [See #1](https://github.com/ugo-framework/ugo-spectator/issues/1) )
-- [*] Enables creating project template.
+- Fast and Simple
+- Small in size
+- Enables Live Reload (Currently upto depth 1. [See #1](https://github.com/ugo-framework/ugo-spectator/issues/1) )
+- Enables creating project template.
 
 # Development
 If you want feel free to clone this repo. All the commands are in lib folder.
