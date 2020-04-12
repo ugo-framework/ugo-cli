@@ -1,6 +1,8 @@
 <div align="center">
-    <img width="300" src="./assets/ugo-gopher.png" alt="ugo cli logo
+    <img width="300" src="./assets/ugo-gopher.png" alt="ugo cli logo>
 </div>
+
+<hr>
 
 # UGO CLI
 The cli of simplicity and power. This CLI tool is all you ever need to create a golang project.
